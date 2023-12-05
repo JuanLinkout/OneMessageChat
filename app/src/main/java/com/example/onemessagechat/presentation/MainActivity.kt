@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.onemessagechat.databinding.ActivityMainBinding
 import com.example.onemessagechat.di.AppModule
 import com.example.onemessagechat.di.AppModuleImplementation
+import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this);
         binding = ActivityMainBinding.inflate(layoutInflater)
         appModule = AppModuleImplementation(this)
         setContentView(binding.root)
