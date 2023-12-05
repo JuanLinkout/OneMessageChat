@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.onemessagechat.infra.daos.SubscriptionDAO
 import com.example.onemessagechat.infra.entities.SubscriptionFromRoom
 
 @Database(entities = [SubscriptionFromRoom::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun subscriptionDAO(): SubscriptionFromRoom
+    abstract fun subscriptionDAO(): SubscriptionDAO
     companion object {
         @Volatile
         private var instance: AppDatabase? = null

@@ -5,7 +5,7 @@ import com.example.onemessagechat.domain.repositories.SubscriptionsRepository
 import com.example.onemessagechat.infra.daos.SubscriptionDAO
 import com.example.onemessagechat.infra.entities.SubscriptionFromRoom
 
-class SubscriptionRepositoryImplementation(private val subscriptionDAO: SubscriptionDAO): SubscriptionsRepository {
+class SubscriptionsRepositoryImplementation(private val subscriptionDAO: SubscriptionDAO): SubscriptionsRepository {
     override suspend fun getAllSubscriptions(): List<Subscription> {
         return subscriptionDAO.getAllSubscriptions().map {
             Subscription(it.subscriptionId)
