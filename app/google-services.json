@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "505526926523",
+    "firebase_url": "https://pdm-onemessagechat-default-rtdb.firebaseio.com",
+    "project_id": "pdm-onemessagechat",
+    "storage_bucket": "pdm-onemessagechat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505526926523:android:9f998dcef09e2bb9c93d9e",
+        "android_client_info": {
+          "package_name": "com.example.onemessagechat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlJCziA2HrQeYoSOtLbefAt3jIlQXq_S0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
