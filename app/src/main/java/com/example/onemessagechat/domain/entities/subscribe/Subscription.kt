@@ -1,5 +1,5 @@
 package com.example.onemessagechat.domain.entities.subscribe
 
-data class Subscribe(
+data class Subscription(
     var subscriptionId: String
 )
