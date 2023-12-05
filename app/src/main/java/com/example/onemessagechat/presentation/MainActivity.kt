@@ -1,7 +1,8 @@
-package com.example.onemessagechat
+package com.example.onemessagechat.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.onemessagechat.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
