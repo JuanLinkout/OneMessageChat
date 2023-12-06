@@ -16,14 +16,14 @@ class ChatDetailsViewModel(
 ) : ViewModel() {
     fun create(key: String, message: String) {
         viewModelScope.launch {
-            chatsRepository.create(Chat(key, message))
+            chatsRepository.createOrUpdate(Chat(key, message))
             subscriptionsRepository.createSubscription(Subscription(key))
         }
     }
 
     fun edit(key: String, message: String) {
         viewModelScope.launch {
-            chatsRepository.create(Chat(key, message))
+            chatsRepository.createOrUpdate(Chat(key, message))
         }
     }
 

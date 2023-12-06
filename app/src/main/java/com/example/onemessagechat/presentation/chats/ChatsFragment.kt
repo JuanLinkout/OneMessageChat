@@ -58,7 +58,6 @@ class ChatsFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        viewModel.fetchData()
         binding.chatsRecyclerView.adapter?.notifyDataSetChanged()
     }
 
