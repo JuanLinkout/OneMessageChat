@@ -14,7 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 
-class ChatsRepositoryImplementation(private val subscriptionsRepository: SubscriptionsRepository): ChatsRepository {
+class ChatsRepositoryImplementation(): ChatsRepository {
     companion object {
         private const val CHAT_LIST_ROOT_NODE = "chat_list_node"
     }

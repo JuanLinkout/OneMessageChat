@@ -20,7 +20,7 @@ class AppModuleImplementation(
     }
 
     override val chatsRepository: ChatsRepository by lazy {
-        ChatsRepositoryImplementation(subscriptionsRepository)
+        ChatsRepositoryImplementation()
     }
 
      override val subscriptionsRepository: SubscriptionsRepository by lazy {
