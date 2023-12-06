@@ -16,10 +16,13 @@ class ChatDetailsViewModel(
 ) : ViewModel() {
     fun createOrUpdate(key: String, message: String, isEditing: Boolean) {
         viewModelScope.launch {
+
             chatsRepository.createOrUpdate(Chat(key, message))
 
             if (!isEditing) {
-                subscriptionsRepository.createSubscription(Subscription(key))
+                val response = subscriptionsRepository.getAllSubscriptions()
+                val foundItem = response.find { it.subscriptionId ==  key}
+                if (foundItem == null) subscriptionsRepository.createSubscription(Subscription(key))
             }
         }
     }
