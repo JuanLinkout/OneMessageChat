@@ -1,5 +1,6 @@
 package com.example.onemessagechat.data.repositories
 
+import android.util.Log
 import com.example.onemessagechat.domain.entities.chats.Chat
 import com.example.onemessagechat.domain.repositories.ChatsRepository
 import com.example.onemessagechat.domain.repositories.SubscriptionsRepository
@@ -17,7 +18,6 @@ class ChatsRepositoryImplementation(private val subscriptionsRepository: Subscri
     }
 
     private val dbFbReference = Firebase.database.getReference(CHAT_LIST_ROOT_NODE)
-
     private val chatList: MutableList<Chat> = mutableListOf()
 
     init{
@@ -54,17 +54,19 @@ class ChatsRepositoryImplementation(private val subscriptionsRepository: Subscri
     }
 
     override suspend fun create(chat: Chat) {
-        TODO("Not yet implemented")
+        dbFbReference.child(chat.key).setValue(chat)
     }
 
     override suspend fun edit(chat: Chat) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getAllChats(): List<Chat> = chatList.filter { chat ->
-        val subscriptions = subscriptionsRepository.getAllSubscriptions()
-        val foundValue = subscriptions.find { it.subscriptionId == chat.key }
-        foundValue != null
-    }
+//    override suspend fun getAllChats(): List<Chat> = chatList.filter { chat ->
+//        val subscriptions = subscriptionsRepository.getAllSubscriptions()
+//        val foundValue = subscriptions.find { it.subscriptionId == chat.key }
+//        foundValue != null
+//    }
+
+    override suspend fun getAllChats(): List<Chat> = chatList
 
 }

@@ -1,32 +1,46 @@
 package com.example.onemessagechat.presentation.chatdetails
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.onemessagechat.R
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.onemessagechat.databinding.FragmentChatDetailsBinding
+import com.example.onemessagechat.domain.entities.navigation.ChatDetailsTypeEnum
 
 class ChatDetailsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ChatDetailsFragment()
-    }
-
-    private lateinit var viewModel: ChatDetailsViewModel
+    private val args: ChatDetailsFragmentArgs by navArgs()
+    private lateinit var binding: FragmentChatDetailsBinding
+    private val viewModel by viewModels<ChatDetailsViewModel>(factoryProducer = { ChatDetailsViewModel.Factory() })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_chat_details, container, false)
-    }
+    ): View {
+        binding = FragmentChatDetailsBinding.inflate(layoutInflater)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ChatDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        if (args.type == ChatDetailsTypeEnum.EDIT) {
+            binding.confirmButton.setOnClickListener {
+               viewModel.create(
+                    binding.chatKeyEditText.text.toString(),
+                    binding.chatMessageEditText.text.toString()
+                )
+            }
+            findNavController().popBackStack()
+        } else if (args.type == ChatDetailsTypeEnum.CREATE) {
+            binding.confirmButton.setOnClickListener {
+               viewModel.edit(
+                    binding.chatKeyEditText.text.toString(),
+                    binding.chatMessageEditText.text.toString()
+                )
 
+                findNavController().popBackStack()
+            }
+        }
+
+        return binding.root
+    }
 }

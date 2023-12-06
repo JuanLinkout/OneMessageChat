@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/chatDetailsFragment">
+    app:startDestination="@id/chatsFragment">
 
     <fragment
         android:id="@+id/chatsFragment"
@@ -32,8 +32,10 @@
         tools:layout="@layout/fragment_chat_details" >
         <argument
             android:name="chat"
-            app:argType="com.example.onemessagechat.domain.entities.chats.Chat"
-            app:nullable="true" />
+            app:argType="com.example.onemessagechat.domain.entities.chats.Chat" />
+        <argument
+            android:name="type"
+            app:argType="com.example.onemessagechat.domain.entities.navigation.ChatDetailsTypeEnum" />
     </fragment>
     <fragment
         android:id="@+id/subscribeFragment"
