@@ -30,7 +30,8 @@ class ChatDetailsFragment : Fragment() {
             binding.confirmButton.setOnClickListener {
                viewModel.createOrUpdate(
                     binding.chatKeyEditText.text.toString(),
-                    binding.chatMessageEditText.text.toString()
+                    binding.chatMessageEditText.text.toString(),
+                   true
                 )
 
                 findNavController().popBackStack()
@@ -39,7 +40,8 @@ class ChatDetailsFragment : Fragment() {
             binding.confirmButton.setOnClickListener {
                viewModel.createOrUpdate(
                     binding.chatKeyEditText.text.toString(),
-                    binding.chatMessageEditText.text.toString()
+                    binding.chatMessageEditText.text.toString(),
+                   false
                 )
 
                 findNavController().popBackStack()

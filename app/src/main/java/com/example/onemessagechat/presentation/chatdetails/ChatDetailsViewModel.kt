@@ -14,10 +14,13 @@ class ChatDetailsViewModel(
     private val chatsRepository: ChatsRepository,
     private val subscriptionsRepository: SubscriptionsRepository
 ) : ViewModel() {
-    fun createOrUpdate(key: String, message: String) {
+    fun createOrUpdate(key: String, message: String, isEditing: Boolean) {
         viewModelScope.launch {
             chatsRepository.createOrUpdate(Chat(key, message))
-            subscriptionsRepository.createSubscription(Subscription(key))
+
+            if (!isEditing) {
+                subscriptionsRepository.createSubscription(Subscription(key))
+            }
         }
     }
 

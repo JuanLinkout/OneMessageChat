@@ -28,7 +28,7 @@ class ChatsFragment : Fragment() {
     ): View {
         binding = FragmentChatsBinding.inflate(layoutInflater)
 
-        viewModel.chats.observe(viewLifecycleOwner) {
+        viewModel.filteredChats.observe(viewLifecycleOwner) {
             binding.chatsRecyclerView.adapter =
                 ChatItemAdapter(it.toTypedArray(), AdapaterCallback())
 
@@ -63,7 +63,7 @@ class ChatsFragment : Fragment() {
 
     inner class AdapaterCallback : AdapterOnClickListener {
         override fun onItemClick(position: Int) {
-            val list = viewModel.chats.value
+            val list = viewModel.filteredChats.value
             val chat = list?.find { it.key == list[position].key } ?: return
             val action =
                 ChatsFragmentDirections.actionChatsFragmentToChatDetailsFragment(
