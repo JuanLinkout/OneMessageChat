@@ -23,16 +23,21 @@ class ChatDetailsFragment : Fragment() {
         binding = FragmentChatDetailsBinding.inflate(layoutInflater)
 
         if (args.type == ChatDetailsTypeEnum.EDIT) {
+            binding.chatKeyEditText.setText(args.chat.key)
+            binding.chatKeyEditText.isEnabled = false
+            binding.chatMessageEditText.setText(args.chat.message)
+
             binding.confirmButton.setOnClickListener {
-               viewModel.create(
+               viewModel.createOrUpdate(
                     binding.chatKeyEditText.text.toString(),
                     binding.chatMessageEditText.text.toString()
                 )
+
+                findNavController().popBackStack()
             }
-            findNavController().popBackStack()
         } else if (args.type == ChatDetailsTypeEnum.CREATE) {
             binding.confirmButton.setOnClickListener {
-               viewModel.edit(
+               viewModel.createOrUpdate(
                     binding.chatKeyEditText.text.toString(),
                     binding.chatMessageEditText.text.toString()
                 )
